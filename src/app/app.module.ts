@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { LinijaMedjugradskaService } from './service/linija-medjugradska.service';
 import { LinjaMedjugradskaListComponent } from './home/linja-medjugradska-list/linja-medjugradska-list.component';
 import { CommonModule } from '@angular/common';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CommonModule } from '@angular/common';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    LinjaMedjugradskaListComponent
+    LinjaMedjugradskaListComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
