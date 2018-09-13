@@ -7,8 +7,29 @@
   </li>
 </ul> -->
 
-<table class="table table-hover">
-  <caption>Medjugradske linije</caption>
+<div class="form-group">
+  <label for="polazak-input">Polazak: </label>
+  <input type="date" class="form-control" id="polazak-input" [(ngModel)]="pretraga.polazak">
+</div>
+<div class="form-group">
+  <label for="polazak-input">Prevoznik: </label>
+  <input type="text" class="form-control" id="polazak-input" [(ngModel)]="pretraga.prevoznik">
+</div>
+<div class="form-group">
+  <label for="polaziste-input">Polaziste: </label>
+  <input type="text" class="form-control" id="polaziste-input" [(ngModel)]="pretraga.polaziste">
+</div>
+<div class="form-group">
+  <label for="odrediste-input">Odrediste: </label>
+  <input type="text" class="form-control" id="odrediste-input" [(ngModel)]="pretraga.odrediste">
+</div>
+<button type="button" class="btn btn-primary" (click)="trazi()">Pretrazi</button>
+<button type="button" class="btn btn-secondary" (click)="restartuj()">Restartuj</button>
+
+<br> <br>
+
+<table class="table table-hover" id="tabela">
+  <!-- <caption>Medjugradske linije</caption> -->
   <thead>
     <tr>
       <th scope="col">Polazak</th>
@@ -19,6 +40,9 @@
   <tbody *ngFor='let linija of (linijaMedjugradska$ | async)'>
     <td>{{linija.polazak}}</td>
     <td>{{linija.prevoznik.naziv}}</td>
-    <td><div *ngFor='let medjulinija of linija.medjulinije'>{{medjulinija.polaziste.naziv}} - {{medjulinija.odrediste.naziv}}</div></td>
+    <td>
+      <div *ngFor='let medjulinija of linija.medjulinije'>{{medjulinija.polaziste.naziv}} -
+        {{medjulinija.odrediste.naziv}}</div>
+    </td>
   </tbody>
 </table>

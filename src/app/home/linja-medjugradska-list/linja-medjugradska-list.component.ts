@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LinijaMedjugradskaService } from '../../service/linija-medjugradska.service';
-import { LinijaMedjugradska } from '../../class/linija-medjugradska';
 import { Observable } from 'rxjs';
+import { Pretraga } from '../../class/pretraga';
+import { LinijaMedjugradskaService } from '../../service/linija-medjugradska.service';
 
 @Component({
   selector: 'app-linja-medjugradska-list',
@@ -9,16 +9,22 @@ import { Observable } from 'rxjs';
   styleUrls: ['./linja-medjugradska-list.component.css']
 })
 export class LinjaMedjugradskaListComponent implements OnInit {
-  columnsToDisplay: string[] = ['Prevoznik', 'Polazak', 'Medjulinije'];
   linijaMedjugradska$: Observable<any>;
+  pretraga: Pretraga = new Pretraga();
 
   constructor(private linijaMedjugradskaService: LinijaMedjugradskaService) { }
 
   ngOnInit() {
     this.linijaMedjugradska$ = this.linijaMedjugradskaService.get();
   }
-}
 
-LinjaMedjugradskaListComponent.prototype.toString = function() {
-  return "asd";
+  trazi() {
+    this.linijaMedjugradska$ = this.linijaMedjugradskaService.pretrazi(this.pretraga);
+  }
+
+  restartuj() {
+    this.pretraga.odrediste = this.pretraga.polaziste = this.pretraga.polazak = this.pretraga.prevoznik = "";
+    this.linijaMedjugradska$ = this.linijaMedjugradskaService.get();
+  }
+
 }
