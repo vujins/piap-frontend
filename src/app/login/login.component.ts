@@ -18,11 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UserService, private cookieService: MycookieService) { }
 
   ngOnInit() {
-    // if (this.cookieService.getCookie() == "") {
-    //   console.log("null je");
-    // } else {
-    //   console.log(this.cookieService.getCookie());
-    // }
+
   }
 
   login() {
