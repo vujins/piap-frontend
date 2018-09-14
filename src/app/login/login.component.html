@@ -1,11 +1,12 @@
-<form>
-  <div class="form-group">
-    <label for="userename-input">Username: </label>
-    <input type="text" class="form-control" id="username-input" placeholder="Type your username here!">
-  </div>
-  <div class="form-group">
-    <label for="password-input">Password: </label>
-    <input type="password" class="form-control" id="password-input" placeholder="Type your password here!">
-  </div>
-  <button type="submit" class="btn btn-primary">Login</button>
-</form>
+<div class="form-group">
+  <label for="userename-input">Username: </label>
+  <input type="text" class="form-control" id="username-input" placeholder="Type your username here!" [(ngModel)]="user.username">
+</div>
+<div class="form-group">
+  <label for="password-input">Password: </label>
+  <input type="password" class="form-control" id="password-input" placeholder="Type your password here!" [(ngModel)]="user.password">
+</div>
+<button type="button" class="btn btn-primary" (click)="login()">Login</button>
+<div class = "">
+  {{msg}}
+</div>
