@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http'
 import { CookieService } from 'node_modules/ngx-cookie-service'
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -14,11 +13,11 @@ import { LinijaMedjugradskaService } from './service/linija-medjugradska.service
 import { LinjaMedjugradskaListComponent } from './home/linja-medjugradska-list/linja-medjugradska-list.component';
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation/navigation.component';
+import { httpInterceptorProviders } from './http-interceptors/provider';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     FooterComponent,
     HomeComponent,
     LoginComponent,
@@ -34,7 +33,8 @@ import { NavigationComponent } from './navigation/navigation.component';
   ],
   providers: [
     LinijaMedjugradskaService,
-    CookieService
+    CookieService,
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

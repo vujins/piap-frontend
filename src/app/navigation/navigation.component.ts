@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MycookieService } from '../auth/mycookie.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-navigation',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cookieService: MycookieService, private userService: UserService) {
+
+   }
 
   ngOnInit() {
+
+  }
+
+  logout() {
+    this.cookieService.deleteCookie();
+    this.userService.logout();
   }
 
 }

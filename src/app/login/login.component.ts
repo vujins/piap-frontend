@@ -23,17 +23,18 @@ export class LoginComponent implements OnInit {
 
   login() {
     var value = "Basic " + btoa(this.user.username + ":" + this.user.password);
+    this.cookieService.setCookie(value);
     this.userService.login(value).subscribe(
       successResponse => {
         this.user.role = successResponse;
         this.userService.setUser(this.user);
-        this.cookieService.setCookie(value);
         this.msg = "";
       },
       errorResponse => {
         this.msg = "Pogresni kredencijali";
+        this.cookieService.deleteCookie();
       }
     );
-    
+
   }
 }
