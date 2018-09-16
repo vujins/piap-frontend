@@ -14,6 +14,7 @@ import { LinjaMedjugradskaListComponent } from './home/linja-medjugradska-list/l
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation/navigation.component';
 import { httpInterceptorProviders } from './http-interceptors/provider';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { httpInterceptorProviders } from './http-interceptors/provider';
     HomeComponent,
     LoginComponent,
     LinjaMedjugradskaListComponent,
-    NavigationComponent
+    NavigationComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

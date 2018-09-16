@@ -22,11 +22,13 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    var value = "Basic " + btoa(this.user.username + ":" + this.user.password);
+    var sha1 = require('sha1');
+    var encryptedPassword = sha1(this.user.password);
+    var value = "Basic " + btoa(this.user.username + ":" + encryptedPassword);
     this.cookieService.setCookie(value);
     this.userService.login(value).subscribe(
       successResponse => {
-        this.user.role = successResponse;
+        this.user.tipovi = successResponse;
         this.userService.setUser(this.user);
         this.msg = "";
       },

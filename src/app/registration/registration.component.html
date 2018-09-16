@@ -1,0 +1,128 @@
+<div class="container">
+    <h1>Registracija</h1>
+    <form (ngSubmit)="onSubmit()" #regForm="ngForm">
+
+        <div class="form-group">
+            <label for="ime">Ime</label>
+            <input type="text" class="form-control" id="ime" required [(ngModel)]="user.ime" name="ime" #ime="ngModel">
+            <div [hidden]="ime.valid || ime.pristine" class="alert alert-danger">
+                Ime je obavezno
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="prezime">Prezime</label>
+            <input type="text" class="form-control" id="prezime" required [(ngModel)]="user.prezime" name="prezime"
+                #prezime="ngModel">
+            <div [hidden]="prezime.valid || prezime.pristine" class="alert alert-danger">
+                Prezime je obavezno
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="username">Korisnicko ime</label>
+            <input type="text" class="form-control" id="username" required [(ngModel)]="user.username" name="username"
+                #username="ngModel">
+            <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+                Korisnicko ime je obavezno
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Lozinka</label>
+            <input type="password" class="form-control" id="password" required [(ngModel)]="user.password" name="password"
+                #password="ngModel">
+            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                Lozinka je obavezna
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password_potvrda">Potvrda lozinke</label>
+            <input type="password" class="form-control" id="password_potvrda" required [(ngModel)]="password_potvrda"
+                name="password_potvrda" #password_potvrda_model="ngModel">
+            <div [hidden]="user.password == password_potvrda">
+                <div [hidden]="password_potvrda_model.pristine" class="alert alert-danger">
+                    Lozinke nisu iste
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="opstina">Opstina</label>
+            <input type="text" class="form-control" id="opstina" required [(ngModel)]="user.opstina" name="opstina"
+                #opstina="ngModel">
+            <div [hidden]="opstina.valid || opstina.pristine" class="alert alert-danger">
+                Opstina je obavezno
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="grad">Grad</label>
+            <input type="text" class="form-control" id="grad" required [(ngModel)]="user.grad" name="grad" #grad="ngModel">
+            <div [hidden]="grad.valid || grad.pristine" class="alert alert-danger">
+                Grad je obavezno
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="adresa">Adresa</label>
+            <input type="text" class="form-control" id="adresa" required [(ngModel)]="user.adresa" name="adresa"
+                #adresa="ngModel">
+            <div [hidden]="adresa.valid || adresa.pristine" class="alert alert-danger">
+                Adresa je obavezno
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="rodjendan">Datum rodjenja</label>
+            <input type="date" class="form-control" id="rodjendan" required [(ngModel)]="user.rodjendan" name="rodjendan"
+                #rodjendan="ngModel">
+            <div [hidden]="rodjendan.valid || rodjendan.pristine" class="alert alert-danger">
+                Datum rodjenja je obavezan
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="telefon">Broj telefona</label>
+            <input type="text" class="form-control" id="telefon" required [(ngModel)]="user.telefon" name="telefon"
+                #telefon="ngModel">
+            <div [hidden]="telefon.valid || telefon.pristine" class="alert alert-danger">
+                Broj telefona je obavezan
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="zaposlen">Kategorija zaposlenja</label>
+            <select class="form-control" id="zaposlen" required [(ngModel)]="user.zaposlen" name="zaposlen" #zaposlen="ngModel">
+                <option *ngFor="let zaposlen of kategorije" [value]="zaposlen">{{zaposlen}}</option>
+            </select>
+            <div [hidden]="zaposlen.valid || zaposlen.pristine" class="alert alert-danger">
+                Kategorija zaposlenja je obavezna
+            </div>
+        </div>
+
+        TODO: napravi validaciju za email
+        <div class="form-group">
+            <label for="email">Elektronska posta</label>
+            <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" #email="ngModel">
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                Elektronska posta nije u dobrom formatu
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="!regForm.form.valid">Registruj se</button>
+        <button type="button" class="btn btn-default" (click)="reset(); regForm.reset()">Reset</button>
+    </form>
+</div>
+
+<br>
+
+<div [hidden]="msg == ''">
+    <div [hidden]="uspeh" class="alert alert-danger">
+        {{msg}}
+    </div>
+    <div [hidden]="!uspeh" class="alert alert-success">
+        {{msg}}
+    </div>
+</div>

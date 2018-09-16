@@ -11,7 +11,8 @@ export class UserService {
 
   user: User = new User();
   isLoggedIn: boolean = false;
-  login_url = 'http://localhost:8080/korisnik/login';
+  base_url = "http://localhost:8080/korisnik";
+  login_url = this.base_url + "/login";
 
   constructor(private httpClient: HttpClient, private cookieService: MycookieService) {
     var value = this.cookieService.getCookie();
@@ -22,7 +23,7 @@ export class UserService {
           this.user.username = decodedValue.split(':')[0];
 
           this.isLoggedIn = true;
-          this.user.role = successResponse;
+          this.user.tipovi = successResponse;
         },
         errorResponse => {
           alert("STA SE DESAVA");
@@ -38,6 +39,10 @@ export class UserService {
 
   login(value: string): Observable<Array<any>> {
     return this.httpClient.get<Array<any>>(this.login_url);
+  }
+
+  register(user: User) {
+    return this.httpClient.post<User>(this.base_url, user);
   }
 
   logout() {

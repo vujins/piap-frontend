@@ -50,6 +50,7 @@ export class LinjaMedjugradskaListComponent implements OnInit {
   }
 
   restartuj() {
+    this.pretraga.polazak =  this.pretraga.prevoznik =  this.pretraga.polaziste =  this.pretraga.odrediste = "";
     this.ispretraga = false;
     this.get();
   }
