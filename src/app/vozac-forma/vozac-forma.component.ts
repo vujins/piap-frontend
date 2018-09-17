@@ -19,6 +19,8 @@ export class VozacFormaComponent implements OnInit {
   }
 
   save() {
+    this.vozac.datum_zaposlenja = this.vozac.datum_zaposlenja + ' 00:00';
+    this.vozac.rodjendan = this.vozac.rodjendan + ' 00:00';
     this.vozacService.save(this.vozac).subscribe(
       success => {
         this.msg = "Uspesno dodat vozac!";

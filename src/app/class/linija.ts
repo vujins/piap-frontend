@@ -8,14 +8,4 @@ export class Linija {
     toString = function LinijaToString() {
         return "nestoo"
     }
-
-
-    // toString(): string {
-    //     return this.polaziste.naziv + this.odrediste.naziv;
-    // }
-}
-
-
-Linija.prototype.toString = function() {
-    return "aasdadasds";
 }

@@ -18,6 +18,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AdminComponent } from './admin/admin.component';
 import { MedjugradskaAdminComponent } from './medjugradska-admin/medjugradska-admin.component';
 import { VozacFormaComponent } from './vozac-forma/vozac-forma.component';
+import { AutobusFormaComponent } from './autobus-forma/autobus-forma.component';
+import { LinijaFormaComponent } from './linija-forma/linija-forma.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { VozacFormaComponent } from './vozac-forma/vozac-forma.component';
     RegistrationComponent,
     AdminComponent,
     MedjugradskaAdminComponent,
-    VozacFormaComponent
+    VozacFormaComponent,
+    AutobusFormaComponent,
+    LinijaFormaComponent
   ],
   imports: [
     BrowserModule,
