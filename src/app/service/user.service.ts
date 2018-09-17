@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../class/user';
 import { MycookieService } from '../auth/mycookie.service';
-import { Tip } from '../class/tip';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +18,9 @@ export class UserService {
   base_url = "http://localhost:8080/korisnik";
   login_url = this.base_url + "/login";
   postoji_url = this.base_url + '/postoji';
+  neodobreni_url = this.base_url + '/neodobreni';
+  odobri_url = this.base_url + '/odobri';
+  odbij_url = this.base_url + '/odbij';
 
   constructor(private httpClient: HttpClient, private cookieService: MycookieService) {
 
@@ -71,6 +73,18 @@ export class UserService {
   postoji(username: string) {
     var url = this.postoji_url + '?username=' + username;
     return this.httpClient.get<boolean>(url);
+  }
+
+  neodobreni() {
+    return this.httpClient.get<Array<User>>(this.neodobreni_url);
+  }
+
+  odobri(username: string) {
+    return this.httpClient.put<User>(this.odobri_url, username);
+  }
+
+  odbij(username: string) {
+    return this.httpClient.delete(this.odbij_url + '?username=' + username);
   }
 
 }

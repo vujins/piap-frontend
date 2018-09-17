@@ -16,6 +16,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { httpInterceptorProviders } from './http-interceptors/provider';
 import { RegistrationComponent } from './registration/registration.component';
 import { AdminComponent } from './admin/admin.component';
+import { MedjugradskaAdminComponent } from './medjugradska-admin/medjugradska-admin.component';
+import { VozacFormaComponent } from './vozac-forma/vozac-forma.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AdminComponent } from './admin/admin.component';
     LinjaMedjugradskaListComponent,
     NavigationComponent,
     RegistrationComponent,
-    AdminComponent
+    AdminComponent,
+    MedjugradskaAdminComponent,
+    VozacFormaComponent
   ],
   imports: [
     BrowserModule,
