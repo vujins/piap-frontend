@@ -25,7 +25,7 @@ export class User {
         this.opstina = this.grad = this.adresa = 
         this.telefon = this. zaposlen= this.rodjendan = "asd";
         this.tipovi = [
-            new Tip(1, 'ROLE_USER')
+            
         ];
     }
 }

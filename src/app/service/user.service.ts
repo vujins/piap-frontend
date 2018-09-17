@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../class/user';
 import { MycookieService } from '../auth/mycookie.service';
+import { Tip } from '../class/tip';
 
 @Injectable({
   providedIn: 'root'
@@ -10,23 +11,39 @@ import { MycookieService } from '../auth/mycookie.service';
 export class UserService {
 
   user: User = new User();
+
   isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
+  isUser: boolean = false;
+
   base_url = "http://localhost:8080/korisnik";
   login_url = this.base_url + "/login";
+  postoji_url = this.base_url + '/postoji';
 
   constructor(private httpClient: HttpClient, private cookieService: MycookieService) {
+
     var value = this.cookieService.getCookie();
+
     if (value.length) {
       this.login(value).subscribe(
         successResponse => {
+
+          value = value.split(' ')[1];
           var decodedValue = atob(value);
           this.user.username = decodedValue.split(':')[0];
 
           this.isLoggedIn = true;
-          this.user.tipovi = successResponse;
+
+          successResponse.forEach(x => {
+            if (x.authority === 'ROLE_ADMIN') {
+              this.isAdmin = true;
+            } else if (x.authority === 'ROLE_USER') {
+              this.isUser = true;
+            }
+          });
         },
         errorResponse => {
-          alert("STA SE DESAVA");
+          alert("Neuspesan login!");
         }
       );
     }
@@ -46,8 +63,14 @@ export class UserService {
   }
 
   logout() {
-    this.isLoggedIn = false;
+    this.isLoggedIn = this.isAdmin = this.isUser = false;
     this.user = null;
+    this.cookieService.deleteCookie();
+  }
+
+  postoji(username: string) {
+    var url = this.postoji_url + '?username=' + username;
+    return this.httpClient.get<boolean>(url);
   }
 
 }

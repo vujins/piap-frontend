@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation/navigation.component';
 import { httpInterceptorProviders } from './http-interceptors/provider';
 import { RegistrationComponent } from './registration/registration.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RegistrationComponent } from './registration/registration.component';
     LoginComponent,
     LinjaMedjugradskaListComponent,
     NavigationComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
