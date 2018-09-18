@@ -2,10 +2,8 @@ import { Stajaliste } from "./stajaliste";
 
 export class Linija {
     id: number;
-    polaziste: Stajaliste;
-    odrediste: Stajaliste;
+    polaziste: Stajaliste = new Stajaliste();
+    odrediste: Stajaliste = new Stajaliste();
 
-    toString = function LinijaToString() {
-        return "nestoo"
-    }
+
 }

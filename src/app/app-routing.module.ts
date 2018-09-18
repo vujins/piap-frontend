@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component'
 import { RegistrationComponent } from './registration/registration.component';
 import { AdminComponent } from './admin/admin.component';
 import { MedjugradskaAdminComponent } from './medjugradska-admin/medjugradska-admin.component';
+import { StepperComponent } from './stepper/stepper.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'admin', component: AdminComponent },
-  { path: 'medjugradska-admin', component: MedjugradskaAdminComponent }
+  { path: 'medjugradska-admin', component: MedjugradskaAdminComponent },
+  { path: 'stepper', component: StepperComponent }
 ];
 
 @NgModule({

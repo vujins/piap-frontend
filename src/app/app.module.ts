@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
-import { HttpClientModule } from '@angular/common/http'
-import { CookieService } from 'node_modules/ngx-cookie-service'
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'node_modules/ngx-cookie-service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -20,6 +22,9 @@ import { MedjugradskaAdminComponent } from './medjugradska-admin/medjugradska-ad
 import { VozacFormaComponent } from './vozac-forma/vozac-forma.component';
 import { AutobusFormaComponent } from './autobus-forma/autobus-forma.component';
 import { LinijaFormaComponent } from './linija-forma/linija-forma.component';
+import { StepperComponent } from './stepper/stepper.component';
+import { ShareModule } from './share/share.module';
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 
 @NgModule({
   declarations: [
@@ -34,14 +39,19 @@ import { LinijaFormaComponent } from './linija-forma/linija-forma.component';
     MedjugradskaAdminComponent,
     VozacFormaComponent,
     AutobusFormaComponent,
-    LinijaFormaComponent
+    LinijaFormaComponent,
+    StepperComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    ShareModule,
+    AngularDateTimePickerModule
   ],
   providers: [
     LinijaMedjugradskaService,

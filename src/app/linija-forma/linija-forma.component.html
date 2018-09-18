@@ -1,26 +1,73 @@
-<form (ngSubmit)="save()">
-  <div class="form-group">
-    <label for="linija_polaziste">Polaziste</label>
-    <input type="text" class="form-control" id="linija_polaziste" [(ngModel)]="linija.polaziste" name="linija_polaziste"
-      placeholder="Zrenjanin">
-  </div>
-  <div class="form-group">
-    <label for="linija_odrediste">Odrediste</label>
-    <input type="text" class="form-control" id="linija_odrediste" placeholder="Beograd" [(ngModel)]="linija.odrediste" name="linija_odrediste">
-  </div>
+<mat-horizontal-stepper style="background-color: antiquewhite">
 
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  <mat-step label="Linije">
 
-<br>
+    <form (ngSubmit)="sacuvajLiniju()">
+      <div class="form-group">
+        <label for="linija_polaziste">Polaziste</label>
+        <input type="text" class="form-control" id="linija_polaziste" [(ngModel)]="linija.polaziste.naziv" name="linija_polaziste"
+          placeholder="Zrenjanin">
+      </div>
+      <div class="form-group">
+        <label for="linija_odrediste">Odrediste</label>
+        <input type="text" class="form-control" id="linija_odrediste" placeholder="Beograd" [(ngModel)]="linija.odrediste.naziv"
+          name="linija_odrediste">
+      </div>
 
-<div [hidden]="msg == ''">
-  <div [hidden]="!greska" class="alert alert-danger">
-    {{msg}}
-  </div>
-  <div [hidden]="greska" class="alert alert-success">
-    {{msg}}
-  </div>
-</div>
+      <div [hidden]="msg == ''">
+        <div [hidden]="!greska" class="alert alert-danger">
+          {{msg}}
+        </div>
+        <div [hidden]="greska" class="alert alert-success">
+          {{msg}}
+        </div>
+      </div>
 
-TODO ubaci provere za polja
+      <button type="submit" class="btn btn-primary">Sacuvaj Liniju</button>
+    </form>
+
+    <br>
+
+    <div>
+      <button mat-button matStepperNext>Sledeci</button>
+    </div>
+
+  </mat-step>
+  <mat-step label="Dodatne informacije">
+
+    <form>
+      <div class="form-group">
+        <label for="prevoznik">Prevoznik</label>
+        <select class="form-control" id="prevoznik" [(ngModel)]="prevoznik" name="prevoznik">
+          <option *ngFor="let p of prevoznici" [value]="p">{{p.naziv}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="vozac">Prevoznik</label>
+        <select class="form-control" id="vozac" [(ngModel)]="vozac" name="vozac">
+          <option *ngFor="let v of vozaci" [value]="p">{{v.ime}} {{v.prezime}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="autobus">Prevoznik</label>
+        <select class="form-control" id="autobus" [(ngModel)]="autobus" name="autobus">
+          <option *ngFor="let a of autobusi" [value]="a">{{a.model}} {{a.marka}} {{a.broj_sedista}}</option>
+        </select>
+      </div>
+
+      <div>
+        <button mat-button matStepperPrevious>Nazad</button>
+        <button mat-button matStepperNext>Sledeci</button>
+      </div>
+
+    </form>
+
+  </mat-step>
+
+  <mat-step label="Vreme">
+  </mat-step>
+
+
+</mat-horizontal-stepper>

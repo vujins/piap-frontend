@@ -14,4 +14,8 @@ export class VozacService {
   save(vozac: Vozac) {
     return this.httpClient.post<Vozac>(this.base_url, vozac);
   }
+
+  get() {
+    return this.httpClient.get<Array<Vozac>>(this.base_url);
+  }
 }

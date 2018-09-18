@@ -14,4 +14,8 @@ export class AutobusService {
   save(autobus: Autobus) {
     return this.httpClient.post<Autobus>(this.base_url, autobus);
   }
+
+  get() {
+    return this.httpClient.get<Array<Autobus>>(this.base_url);
+  }
 }
