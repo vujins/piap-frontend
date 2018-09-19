@@ -24,7 +24,7 @@ import { AutobusFormaComponent } from './autobus-forma/autobus-forma.component';
 import { LinijaFormaComponent } from './linija-forma/linija-forma.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { ShareModule } from './share/share.module';
-import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
+import { PrevoznikFormaComponent } from './prevoznik-forma/prevoznik-forma.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,8 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
     VozacFormaComponent,
     AutobusFormaComponent,
     LinijaFormaComponent,
-    StepperComponent
+    StepperComponent,
+    PrevoznikFormaComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +51,7 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
-    ShareModule,
-    AngularDateTimePickerModule
+    ShareModule
   ],
   providers: [
     LinijaMedjugradskaService,

@@ -7,6 +7,7 @@ import { Vozac } from '../class/vozac';
 import { Autobus } from '../class/autobus';
 import { AutobusService } from '../service/autobus.service';
 import { VozacService } from '../service/vozac.service';
+import { LinijaMedjugradska } from '../class/linija-medjugradska';
 
 @Component({
   selector: 'app-linija-forma',
@@ -17,28 +18,47 @@ export class LinijaFormaComponent implements OnInit {
 
   linije: Array<Linija> = new Array<Linija>();
   linija: Linija = new Linija();
-  
+
+  prevoznikIndex: number = 0;
   prevoznici: Array<Prevoznik> = new Array<Prevoznik>();
-  prevoznik: Prevoznik = new Prevoznik();
 
+  vozacIndex: number = 0;
   vozaci: Array<Vozac> = new Array<Vozac>();
-  vozac: Vozac = new Vozac();
 
+  autobusIndex: number = 0;
   autobusi: Array<Autobus> = new Array<Autobus>();
-  autobus: Autobus = new Autobus;
 
-  polazak: Date;
-  dolazak: Date;
+  settings = {
+    bigBanner: true,
+    timePicker: true,
+    format: 'yyyy-MM-dd hh:mm a',
+    defaultOpen: false
+  }
 
-  msg: string = "";
-  greska: boolean = false;
+  polazak;
+  dolazak;
+  vremepolazka;
+  vremedolazka;
+
+  medjugradska: LinijaMedjugradska = new LinijaMedjugradska();
+
+  msgLinija: string = "";
+  greskaLinija: boolean = false;
+  msgInfo: string = "";
+  greskaInfo: boolean = false;
+  msgVreme: string = "";
+  greskaVreme: boolean = false;
+
+  isSubmitted1: boolean = false;
+  isSubmitted2: boolean = false;
+  isSubmitted3: boolean = false;
 
   constructor(
-    private linijaService: LinijaService, 
+    private linijaService: LinijaService,
     private prevoznikService: PrevoznikService,
     private autobusService: AutobusService,
     private vozacService: VozacService
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.prevoznikService.get().subscribe(
@@ -60,15 +80,15 @@ export class LinijaFormaComponent implements OnInit {
     );
   }
 
-  sacuvajLiniju() {
+  submitLinija() {
 
     if (this.linija.odrediste.naziv === "" || this.linija.polaziste.naziv === "") {
-      this.greska = true;
-      this.msg = "Polja odrediste i polaziste su obavezna!";
+      this.greskaLinija = true;
+      this.msgLinija = "Polja odrediste i polaziste su obavezna!";
       return;
     } else {
-      this.greska = false;
-      this.msg = "";
+      this.greskaLinija = false;
+      this.msgLinija = "Uspesno ste uneli liniju!";
     }
 
     this.linije.push(this.linija);
@@ -76,7 +96,47 @@ export class LinijaFormaComponent implements OnInit {
     this.linija = new Linija();
     this.linija.polaziste = polaziste;
 
-    console.log(this.linije);
+    this.medjugradska.medjulinije = this.linije;
+
+    this.isSubmitted1 = true;
+  }
+
+  submitInfo() {
+
+    if (this.prevoznici.length == 0 || this.vozaci.length == 0 || this.autobusi.length == 0) {
+      this.greskaInfo = true;
+      this.msgInfo = "Polja vozac, autobus i prevoznik su obavezna!";
+    } else {
+
+      this.medjugradska.prevoznik = this.prevoznici[this.prevoznikIndex];
+      this.medjugradska.vozac = this.vozaci[this.vozacIndex];
+      this.medjugradska.autobus = this.autobusi[this.autobusIndex];
+
+      this.greskaInfo = false;
+      this.msgInfo = "Uspesno ste uneli dodatne informacije!";
+    }
+
+    this.isSubmitted2 = true;
+  }
+
+
+  submitVreme() {
+    if (this.polazak != null && this.vremepolazka != null && this.dolazak != null && this.vremedolazka != null) {
+      this.medjugradska.polazak = this.polazak.year + '/' + this.polazak.month + '/' + this.polazak.day + ' ' + this.vremepolazka.hour + ':' + this.vremepolazka.minute;
+      this.medjugradska.dolazak = this.dolazak.year + '/' + this.dolazak.month + '/' + this.dolazak.day + ' ' + this.vremedolazka.hour + ':' + this.vremedolazka.minute;
+
+      this.greskaVreme = false;
+      this.msgVreme = "Uspesno ste uneli datum i vreme polazka i dolazka!";
+
+      this.isSubmitted3 = true;
+    } else {
+      this.greskaVreme = true;
+      this.msgVreme = "Datum i vreme polazka je obavezno!";
+    }
+  }
+
+  submit() {
+
   }
 
 }

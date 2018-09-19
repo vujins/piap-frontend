@@ -14,4 +14,8 @@ export class PrevoznikService {
   get() {
     return this.httpClient.get<Array<Prevoznik>>(this.base_url);
   }
+
+  save(prevoznik: Prevoznik) {
+    return this.httpClient.post<Prevoznik>(this.base_url, prevoznik);
+  }
 }
