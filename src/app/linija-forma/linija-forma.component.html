@@ -187,6 +187,15 @@
       </tbody>
     </table>
 
+    <div [hidden]="msgSubmit == ''">
+      <div [hidden]="!greskaSubmit" class="alert alert-danger">
+        {{msgSubmit}}
+      </div>
+      <div [hidden]="greskaSubmit" class="alert alert-success">
+        {{msgSubmit}}
+      </div>
+    </div>
+
     <button class="btn btn-primary" (click)="submit()">Sacuvaj</button>
 
     <hr>

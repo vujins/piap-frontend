@@ -10,13 +10,13 @@ import { Pretraga } from '../class/pretraga';
 export class LinijaMedjugradskaService {
 
   //TODO izbrisi gosta kad uradis login
-  API = 'http://localhost:8080/medjugradska';
-  url_pretraga = 'http://localhost:8080/medjugradska/pretraga';
+  base_url = 'http://localhost:8080/medjugradska';
+  pretraga_url = this.base_url + '/pretraga';
 
   constructor(private httpClient: HttpClient) { }
 
   get(page: number): Observable<LinijaMedjugradska[]> {
-    return this.httpClient.get<LinijaMedjugradska[]>(this.API + '?stranica=' + page);
+    return this.httpClient.get<LinijaMedjugradska[]>(this.base_url + '?stranica=' + page);
   }
 
   trazi(pretraga: Pretraga, page: number): Observable<LinijaMedjugradska[]> {
@@ -32,6 +32,10 @@ export class LinijaMedjugradskaService {
     if (pretraga.odrediste.length)
       myparams = myparams.set("odrediste", pretraga.odrediste);
 
-    return this.httpClient.get<LinijaMedjugradska[]>(this.url_pretraga, { params: myparams });
+    return this.httpClient.get<LinijaMedjugradska[]>(this.pretraga_url, { params: myparams });
+  }
+
+  save(medjugradska: LinijaMedjugradska) {
+    return this.httpClient.post<LinijaMedjugradska>(this.base_url, medjugradska);
   }
 }

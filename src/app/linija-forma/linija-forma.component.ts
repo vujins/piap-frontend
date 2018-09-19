@@ -8,6 +8,7 @@ import { Autobus } from '../class/autobus';
 import { AutobusService } from '../service/autobus.service';
 import { VozacService } from '../service/vozac.service';
 import { LinijaMedjugradska } from '../class/linija-medjugradska';
+import { LinijaMedjugradskaService } from '../service/linija-medjugradska.service';
 
 @Component({
   selector: 'app-linija-forma',
@@ -48,6 +49,8 @@ export class LinijaFormaComponent implements OnInit {
   greskaInfo: boolean = false;
   msgVreme: string = "";
   greskaVreme: boolean = false;
+  msgSubmit: string = "";
+  greskaSubmit: boolean = false;
 
   isSubmitted1: boolean = false;
   isSubmitted2: boolean = false;
@@ -57,7 +60,8 @@ export class LinijaFormaComponent implements OnInit {
     private linijaService: LinijaService,
     private prevoznikService: PrevoznikService,
     private autobusService: AutobusService,
-    private vozacService: VozacService
+    private vozacService: VozacService,
+    private medjugradskaService: LinijaMedjugradskaService
   ) { }
 
   ngOnInit() {
@@ -122,8 +126,8 @@ export class LinijaFormaComponent implements OnInit {
 
   submitVreme() {
     if (this.polazak != null && this.vremepolazka != null && this.dolazak != null && this.vremedolazka != null) {
-      this.medjugradska.polazak = this.polazak.year + '/' + this.polazak.month + '/' + this.polazak.day + ' ' + this.vremepolazka.hour + ':' + this.vremepolazka.minute;
-      this.medjugradska.dolazak = this.dolazak.year + '/' + this.dolazak.month + '/' + this.dolazak.day + ' ' + this.vremedolazka.hour + ':' + this.vremedolazka.minute;
+      this.medjugradska.polazak = this.polazak.year + '-' + this.polazak.month + '-' + this.polazak.day + ' ' + this.vremepolazka.hour + ':' + this.vremepolazka.minute;
+      this.medjugradska.dolazak = this.dolazak.year + '-' + this.dolazak.month + '-' + this.dolazak.day + ' ' + this.vremedolazka.hour + ':' + this.vremedolazka.minute;
 
       this.greskaVreme = false;
       this.msgVreme = "Uspesno ste uneli datum i vreme polazka i dolazka!";
@@ -136,7 +140,39 @@ export class LinijaFormaComponent implements OnInit {
   }
 
   submit() {
+    // this.medjugradska.medjulinije.forEach(
+    //   element => {
+    //     this.linijaService.save(element);
+    //   }
+    // );
 
+    if (this.isSubmitted1 && this.isSubmitted2 && this.isSubmitted3) {
+
+      console.log(JSON.stringify(this.medjugradska));
+
+      this.medjugradska.medjulinije.forEach(
+        async element => {
+          await this.linijaService.save(element);
+        }
+      );
+
+      //TODO napravi da ovo saceka for each petlju
+      // this.medjugradskaService.save(this.medjugradska).subscribe(
+      //   success => {
+      //     console.log(success);
+      //     this.greskaSubmit = false;
+      //     this.msgSubmit = "Uspesno ste sacuvali medjugradski liniju!";    
+      //   },
+      //   error => {
+      //     console.log(error);
+      //     this.greskaSubmit = true;
+      //     this.msgSubmit = "Greska prilikom cuvanja medjugradske linije";    
+      //   }
+      // );
+    } else {
+      this.greskaSubmit = true;
+      this.msgSubmit = "Niste uneli sve podatke";
+    }
   }
 
 }

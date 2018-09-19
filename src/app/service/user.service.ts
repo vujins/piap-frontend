@@ -36,13 +36,14 @@ export class UserService {
 
           this.isLoggedIn = true;
 
-          successResponse.forEach(x => {
-            if (x.authority === 'ROLE_ADMIN') {
-              this.isAdmin = true;
-            } else if (x.authority === 'ROLE_USER') {
-              this.isUser = true;
-            }
-          });
+          successResponse.forEach(
+            x => {
+              if (x.authority === 'ROLE_ADMIN') {
+                this.isAdmin = true;
+              } else if (x.authority === 'ROLE_USER') {
+                this.isUser = true;
+              }
+            });
         },
         errorResponse => {
           alert("Neuspesan login!");
