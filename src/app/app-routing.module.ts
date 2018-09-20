@@ -6,6 +6,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AdminComponent } from './admin/admin.component';
 import { MedjugradskaAdminComponent } from './medjugradska-admin/medjugradska-admin.component';
 import { StepperComponent } from './stepper/stepper.component';
+import { GradskaAdminComponent } from './gradska-admin/gradska-admin.component';
+import { KarteAdminComponent } from './karte-admin/karte-admin.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'admin', component: AdminComponent },
   { path: 'medjugradska-admin', component: MedjugradskaAdminComponent },
-  { path: 'stepper', component: StepperComponent }
+  { path: 'stepper', component: StepperComponent },
+  { path: 'gradska-admin', component: GradskaAdminComponent },
+  { path: 'karte-admin', component: KarteAdminComponent }
 ];
 
 @NgModule({

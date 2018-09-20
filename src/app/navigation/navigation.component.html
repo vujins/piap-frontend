@@ -19,40 +19,29 @@
         </li>
 
         <li class="nav-item" *ngIf="userService.isAdmin">
-          <a class="nav-link js-scroll-trigger" routerLink="/medjugradska-admin">Medjugradske linije</a>
+          <a class="nav-link js-scroll-trigger" routerLink="/medjugradska-admin">Medjugradske</a>
+        </li>
+
+        <li class="nav-item" *ngIf="userService.isAdmin">
+          <a class="nav-link js-scroll-trigger" routerLink="/gradska-admin">Gradske</a>
+        </li>
+
+        <li class="nav-item" *ngIf="userService.isAdmin">
+          <a class="nav-link js-scroll-trigger" routerLink="/karte-admin">Karte</a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" routerLink="/stepper">Stepper</a>
         </li>
 
-        <!-- <div class="dropdown" *ngIf="userService.isAdmin">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Dropdown button
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </div> -->
-
         <li class="nav-item" *ngIf="!userService.isLoggedIn">
           <a class="nav-link js-scroll-trigger" routerLink="/login">Login</a>
         </li>
 
         <li class="nav-item" *ngIf="userService.isLoggedIn">
-          <a class="nav-link js-scroll-trigger" routerLink="">{{userService.user.username}}</a>
+          <a class="nav-link js-scroll-trigger" routerLink="/home" (click)="logout()">Logout: {{userService.user.username}}</a>
         </li>
 
-        <li class="nav-item" *ngIf="userService.isLoggedIn">
-          <a class="nav-link js-scroll-trigger" routerLink="/home" (click)="logout()">Logout</a>
-        </li>
-
-        <!-- <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-        </li> -->
       </ul>
     </div>
   </div>

@@ -25,6 +25,9 @@ import { LinijaFormaComponent } from './linija-forma/linija-forma.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { ShareModule } from './share/share.module';
 import { PrevoznikFormaComponent } from './prevoznik-forma/prevoznik-forma.component';
+import { GradskaAdminComponent } from './gradska-admin/gradska-admin.component';
+import { KarteAdminComponent } from './karte-admin/karte-admin.component';
+import { GradskaFormaComponent } from './gradska-admin/gradska-forma/gradska-forma.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { PrevoznikFormaComponent } from './prevoznik-forma/prevoznik-forma.compo
     AutobusFormaComponent,
     LinijaFormaComponent,
     StepperComponent,
-    PrevoznikFormaComponent
+    PrevoznikFormaComponent,
+    GradskaAdminComponent,
+    KarteAdminComponent,
+    GradskaFormaComponent
   ],
   imports: [
     BrowserModule,

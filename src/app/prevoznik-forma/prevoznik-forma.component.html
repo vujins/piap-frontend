@@ -1,24 +1,23 @@
 <form (ngSubmit)="save()">
   <div class="form-group">
-    <label for="prevoznik_naziv">Marka</label>
+    <label for="prevoznik_naziv">Naziv</label>
     <input type="text" class="form-control" id="prevoznik_naziv" [(ngModel)]="prevoznik.naziv" name="prevoznik_naziv"
       placeholder="Lasta">
   </div>
   <div class="form-group">
-    <label for="prevoznik_adresa">Model</label>
+    <label for="prevoznik_adresa">Adresa</label>
     <input type="text" class="form-control" id="prevoznik_adresa" placeholder="Kralja Aleksandra 15" [(ngModel)]="prevoznik.adresa"
       name="prevoznik_adresa">
   </div>
   <div class="form-group">
-    <label for="prevoznik_telefon">Broj Sedista</label>
-    <input type="number" class="form-control" id="prevoznik_telefon" [(ngModel)]="prevoznik.telefon" name="prevoznik_telefon">
+    <label for="prevoznik_telefon">Broj telefona</label>
+    <input type="text" class="form-control" id="prevoznik_telefon" [(ngModel)]="prevoznik.telefon" name="prevoznik_telefon" placeholder="065/555-555">
   </div>
   <div class="form-group">
-    <label for="autobus_slika">Slika</label>
-    <input type="file" class="form-control-file" id="autobus_slika" [(ngModel)]="autobus.slike" name="autobus_slika">
+    <label for="prevoznik_slika">Logo</label>
+    <input type="file" class="form-control-file" id="prevoznik_slika" [(ngModel)]="prevoznik.slika" name="prevoznik_slika">
   </div>
 
-  TODO ubaci novi step sa slikama, slike ce imati novu formu i jednu po jednu salji ka bazi
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
@@ -32,5 +31,3 @@
     {{msg}}
   </div>
 </div>
-
-TODO ubaci provere za polja

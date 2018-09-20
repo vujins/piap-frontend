@@ -89,7 +89,7 @@
 
     <form (ngSubmit)="submitVreme()">
       <div class="form-group">
-        <label for="dp1">Datum polazka</label>
+        <label for="dp1">Datum polaska</label>
         <div class="input-group">
 
           <input id="dp1" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="polazak" ngbDatepicker
@@ -101,7 +101,7 @@
       </div>
 
       <div class="form-group">
-        <label for="tp1">Vreme polazka</label>
+        <label for="tp1">Vreme polaska</label>
         <div class="input-group">
           <ngb-timepicker id="tp1" [(ngModel)]="vremepolazka" name="time"></ngb-timepicker>
         </div>
@@ -111,7 +111,7 @@
       <hr>
 
       <div class="form-group">
-        <label for="dp2">Datum dolazka</label>
+        <label for="dp2">Datum dolaska</label>
         <div class="input-group">
 
           <input id="dp2" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="dolazak" ngbDatepicker
@@ -123,7 +123,7 @@
       </div>
 
       <div class="form-group">
-        <label for="tp2">Vreme polazka</label>
+        <label for="tp2">Vreme polaska</label>
         <div class="input-group">
           <ngb-timepicker id="tp2" [(ngModel)]="vremedolazka" name="time"></ngb-timepicker>
         </div>
@@ -152,11 +152,9 @@
     <button class="btn btn-secondary" matStepperPrevious>Nazad</button>
     <button class="btn btn-secondary" matStepperNext>Sledeci</button>
 
-
-
   </mat-step>
 
-  <mat-step label="Sacuvaj">
+  <mat-step label="Potvrda">
     <table class="table table-hover" id="tabela">
 
       <tbody>
@@ -177,11 +175,11 @@
           <td>{{medjugradska.vozac.ime}} {{medjugradska.vozac.prezime}}</td>
         </tr>
         <tr>
-          <th scope="row">Datum i vreme polazka</th>
+          <th scope="row">Datum i vreme polaska</th>
           <td>{{medjugradska.polazak}}</td>
         </tr>
         <tr>
-          <th scope="row">Datum i vreme dolazka</th>
+          <th scope="row">Datum i vreme dolaska</th>
           <td>{{medjugradska.dolazak}}</td>
         </tr>
       </tbody>

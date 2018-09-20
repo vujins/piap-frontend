@@ -11,10 +11,7 @@ export class StajalisteService {
   naziv_url: string = this.base_url + "/naziv";
 
   constructor(private httpClient: HttpClient) {
-    var stajaliste = new Stajaliste();
-    stajaliste.naziv = "Zrenjanin";
 
-    this.save(stajaliste);
   }
 
   save(stajaliste: Stajaliste) {

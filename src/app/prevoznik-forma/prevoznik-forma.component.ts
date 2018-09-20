@@ -20,7 +20,16 @@ export class PrevoznikFormaComponent implements OnInit {
   }
 
   save() {
-
+    this.prevoznikService.save(this.prevoznik).subscribe(
+      success => {
+        this.greska = false;
+        this.msg = "Uspesno ste sacuvali novog prevoznika!";
+      },
+      error => {
+        this.greska = true;
+        this.msg = "Greska prilikom cuvanja novog prevoznika!";
+      }
+    );
   }
 
 }

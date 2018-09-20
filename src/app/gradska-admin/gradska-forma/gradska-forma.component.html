@@ -1,0 +1,126 @@
+<mat-horizontal-stepper style="background-color: antiquewhite">
+
+  <mat-step label="Linije">
+
+    <form (ngSubmit)="submitLinija()">
+      <div class="form-group">
+        <label for="linija_polaziste">Polaziste</label>
+        <input type="text" class="form-control" id="linija_polaziste" [(ngModel)]="linija.polaziste.naziv" name="linija_polaziste"
+          placeholder="Glavna Posta">
+      </div>
+      <div class="form-group">
+        <label for="linija_odrediste">Odrediste</label>
+        <input type="text" class="form-control" id="linija_odrediste" placeholder="27. Marta" [(ngModel)]="linija.odrediste.naziv"
+          name="linija_odrediste">
+      </div>
+
+
+      <div [hidden]="msgLinija == ''">
+        <div [hidden]="!greskaLinija" class="alert alert-danger">
+          {{msgLinija}}
+        </div>
+        <div [hidden]="greskaLinija" class="alert alert-success">
+          {{msgLinija}}
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Sacuvaj Liniju</button>
+    </form>
+
+    <hr>
+
+    <div>
+      <button class="btn btn-secondary" matStepperNext>Sledeci</button>
+    </div>
+
+  </mat-step>
+
+  <mat-step label="Dodatne informacije">
+
+    <form (ngSubmit)="submitInfo()">
+
+      <div class="form-group">
+        <label for="broj_linije">Broj linije</label>
+        <input type="number" class="form-control" id="broj_linije" placeholder="23" [(ngModel)]="broj_linije" name="broj_linije">
+      </div>
+
+      <div class="form-group">
+        <label for="red_voznje">Red voznje</label>
+        <input type="text" class="form-control" id="red_voznje" placeholder="13:30, 13:50, 14:10" [(ngModel)]="red_voznje"
+          name="red_voznje">
+      </div>
+
+      <div class="form-group">
+        <label for="vozac">Vozac</label>
+        <select class="form-control" id="vozac" [(ngModel)]="vozacIndex" name="vozac">
+          <option *ngFor="let v of vozaci; let i = index" [value]="i">{{v.ime}} {{v.prezime}}</option>
+        </select>
+      </div>
+
+
+
+      <div [hidden]="msgInfo == ''">
+        <div [hidden]="!greskaInfo" class="alert alert-danger">
+          {{msgInfo}}
+        </div>
+        <div [hidden]="greskaInfo" class="alert alert-success">
+          {{msgInfo}}
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Sacuvaj Informacije</button>
+
+    </form>
+
+    <hr>
+
+    <div>
+      <button class="btn btn-secondary" matStepperPrevious>Nazad</button>
+      <button class="btn btn-secondary" matStepperNext>Sledeci</button>
+    </div>
+
+
+  </mat-step>
+
+  <mat-step label="Potvrda">
+
+    <table class="table table-hover" id="tabela">
+      <tbody>
+        
+        <tr>
+          <th scope="row">Broj linije</th>
+          <td>{{gradska.broj_linije}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Red voznje</th>
+          <td>{{gradska.red_voznje}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Vozac</th>
+          <td>{{gradska.vozac.ime}} {{gradska.vozac.prezime}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Linije</th>
+          <td *ngFor='let l of gradska.medjulinije'>{{l.polaziste.naziv}} - {{l.odrediste.naziv}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <div [hidden]="msgSubmit == ''">
+      <div [hidden]="!greskaSubmit" class="alert alert-danger">
+        {{msgSubmit}}
+      </div>
+      <div [hidden]="greskaSubmit" class="alert alert-success">
+        {{msgSubmit}}
+      </div>
+    </div>
+
+    <button class="btn btn-primary" (click)="submit()">Sacuvaj</button>
+
+    <hr>
+
+    <button class="btn btn-secondary" matStepperPrevious>Nazad</button>
+  </mat-step>
+
+</mat-horizontal-stepper>

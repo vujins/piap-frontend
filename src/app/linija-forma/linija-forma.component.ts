@@ -139,36 +139,30 @@ export class LinijaFormaComponent implements OnInit {
     }
   }
 
-  submit() {
-    // this.medjugradska.medjulinije.forEach(
-    //   element => {
-    //     this.linijaService.save(element);
-    //   }
-    // );
+  async submit() {
 
     if (this.isSubmitted1 && this.isSubmitted2 && this.isSubmitted3) {
 
-      console.log(JSON.stringify(this.medjugradska));
 
-      this.medjugradska.medjulinije.forEach(
-        async element => {
-          await this.linijaService.save(element);
+      for(let i = 0; i < this.medjugradska.medjulinije.length; i++) {
+        let promise = this.linijaService.save(this.medjugradska.medjulinije[i]);
+        this.medjugradska.medjulinije[i] = <Linija> await promise;
+      }
+
+      // console.log(JSON.stringify(this.medjugradska));
+
+      this.medjugradskaService.save(this.medjugradska).subscribe(
+        success => {
+          // console.log(success);
+          this.greskaSubmit = false;
+          this.msgSubmit = "Uspesno ste sacuvali medjugradski liniju!";
+        },
+        error => {
+          // console.log(error);
+          this.greskaSubmit = true;
+          this.msgSubmit = "Greska prilikom cuvanja medjugradske linije";
         }
       );
-
-      //TODO napravi da ovo saceka for each petlju
-      // this.medjugradskaService.save(this.medjugradska).subscribe(
-      //   success => {
-      //     console.log(success);
-      //     this.greskaSubmit = false;
-      //     this.msgSubmit = "Uspesno ste sacuvali medjugradski liniju!";    
-      //   },
-      //   error => {
-      //     console.log(error);
-      //     this.greskaSubmit = true;
-      //     this.msgSubmit = "Greska prilikom cuvanja medjugradske linije";    
-      //   }
-      // );
     } else {
       this.greskaSubmit = true;
       this.msgSubmit = "Niste uneli sve podatke";
