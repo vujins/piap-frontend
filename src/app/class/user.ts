@@ -23,7 +23,7 @@ export class User {
     constructor() {
         this.ime = this.prezime = this.username = this.password =
         this.opstina = this.grad = this.adresa = 
-        this.telefon = this. zaposlen= this.rodjendan = "asd";
+        this.telefon = this. zaposlen= this.rodjendan = "";
         this.tipovi = [
             
         ];

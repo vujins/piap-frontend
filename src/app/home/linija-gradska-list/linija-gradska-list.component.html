@@ -1,0 +1,51 @@
+<form (ngSubmit)="trazi()">
+
+  <div class="form-group">
+    <label for="broj_linije">Broj linije</label>
+    <input type="text" class="form-control" id="broj_linije" [(ngModel)]="broj_linije" name="broj_linije" placeholder="23">
+  </div>
+
+  <div class="form-group">
+    <label for="polaziste">Polaziste</label>
+    <input type="text" class="form-control" id="polaziste" placeholder="Glavna Posta" [(ngModel)]="polaziste" name="polaziste">
+  </div>
+
+  <div class="form-group">
+    <label for="odrediste">Odrediste</label>
+    <input type="text" class="form-control" id="odrediste" placeholder="27. Mart" [(ngModel)]="odrediste" name="odrediste">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Trazi</button>
+  <button type="button" class="btn btn-secondary" (click)="restartuj()">Restartuj</button>
+
+</form>
+
+
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item page-link" *ngFor="let p of pages; let i = index" (click)="paginacija(i)">{{i + 1}}</li>
+  </ul>
+</nav>
+
+<table class="table table-hover" id="tabela">
+  <!-- <caption>Medjugradske linije</caption> -->
+  <thead>
+    <tr>
+      <th scope="col">Broj linije</th>
+      <th scope="col">Red voznje</th>
+      <th scope="col">Medjulinije</th>
+    </tr>
+  </thead>
+  <tbody *ngFor='let linija of linije'>
+    <tr>
+      <td>{{linija.broj_linije}}</td>
+      <td>{{linija.red_voznje}}</td>
+      <td>
+        <div *ngFor='let medjulinija of linija.medjulinije'>{{medjulinija.polaziste.naziv}} -
+          {{medjulinija.odrediste.naziv}}</div>
+      </td>
+    </tr>
+  </tbody>
+</table>

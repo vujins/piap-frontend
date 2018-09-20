@@ -46,6 +46,7 @@ export class UserService {
             });
         },
         errorResponse => {
+          this.cookieService.deleteCookie();
           alert("Neuspesan login!");
         }
       );

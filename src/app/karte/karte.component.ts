@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { RezervacijaService } from '../service/rezervacija.service';
 import { Rezervacija } from '../class/rezervacija';
+import { RezervacijaService } from '../service/rezervacija.service';
+import { UserService } from '../service/user.service';
 
 @Component({
-  selector: 'app-karte-admin',
-  templateUrl: './karte-admin.component.html',
-  styleUrls: ['./karte-admin.component.css']
+  selector: 'app-karte',
+  templateUrl: './karte.component.html',
+  styleUrls: ['./karte.component.css']
 })
-export class KarteAdminComponent implements OnInit {
+export class KarteComponent implements OnInit {
 
   rezervacije: Array<Rezervacija>;
 
@@ -15,27 +16,15 @@ export class KarteAdminComponent implements OnInit {
   greska: boolean = false;
 
   constructor(
+    private userService: UserService,
     private rezervacijaService: RezervacijaService
-  ) { }
+    ) { }
 
   ngOnInit() {
-    this.rezervacijaService.get().subscribe(
+    
+    this.rezervacijaService.getUser().subscribe(
       success => {
         this.rezervacije = success;
-      }
-    );
-  }
-
-  odobri(rezervacija: Rezervacija) {
-    this.rezervacijaService.odobri(rezervacija).subscribe(
-      success => {
-        this.rezervacije[this.rezervacije.indexOf(rezervacija)].odobren = true;
-        this.msg = "Uspesno ste odobrili rezervaciju!";
-        this.greska = false;
-      },
-      error => {
-        this.msg = "Greska prilikom odobravanja rezervacije!";
-        this.greska = true;
       }
     );
   }
@@ -52,6 +41,7 @@ export class KarteAdminComponent implements OnInit {
         this.greska = true;
       }
     );
+    
   }
 
 }

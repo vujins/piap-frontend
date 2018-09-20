@@ -149,16 +149,13 @@ export class LinijaFormaComponent implements OnInit {
         this.medjugradska.medjulinije[i] = <Linija> await promise;
       }
 
-      // console.log(JSON.stringify(this.medjugradska));
 
       this.medjugradskaService.save(this.medjugradska).subscribe(
         success => {
-          // console.log(success);
           this.greskaSubmit = false;
           this.msgSubmit = "Uspesno ste sacuvali medjugradski liniju!";
         },
         error => {
-          // console.log(error);
           this.greskaSubmit = true;
           this.msgSubmit = "Greska prilikom cuvanja medjugradske linije";
         }

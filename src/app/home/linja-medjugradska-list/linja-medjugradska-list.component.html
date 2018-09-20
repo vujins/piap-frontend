@@ -1,4 +1,3 @@
-
 <div class="form-group">
   <label for="polazak-input">Polazak: </label>
   <input type="date" class="form-control" id="polazak-input" [(ngModel)]="pretraga.polazak">
@@ -20,6 +19,15 @@
 
 <br> <br>
 
+<div *ngIf="msg != ''">
+  <div *ngIf="greska" class="alert alert-danger">
+    {{msg}}
+  </div>
+  <div *ngIf="!greska" class="alert alert-success">
+    {{msg}}
+  </div>
+</div>
+
 <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item page-link" *ngFor="let p of pages; let i = index" (click)="paginacija(i)">{{i + 1}}</li>
@@ -33,6 +41,7 @@
       <th scope="col">Polazak</th>
       <th scope="col">Prevoznik</th>
       <th scope="col">Medjulinije</th>
+      <th scope="col" *ngIf="userService.isUser">Rezervisi</th>
     </tr>
   </thead>
   <tbody *ngFor='let linija of linije'>
@@ -42,6 +51,9 @@
       <td>
         <div *ngFor='let medjulinija of linija.medjulinije'>{{medjulinija.polaziste.naziv}} -
           {{medjulinija.odrediste.naziv}}</div>
+      </td>
+      <td *ngIf="userService.isUser">
+        <button class="btn btn-info" (click)="rezervisi(linija)">Rezervisi</button>
       </td>
     </tr>
   </tbody>

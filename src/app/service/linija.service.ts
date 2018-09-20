@@ -29,15 +29,11 @@ export class LinijaService {
       this.httpClient.get<Linija>(this.pronadji_url, {params : params}).subscribe(
         success => {
           if (success) {
-            // console.log("Linija servis je nasao liniju!");
-            // console.log(success);
             resolve(success);
           }
           else {
             this.httpClient.post<Linija>(this.base_url, linija).subscribe(
               success => {
-                // console.log("Linija servis je sacuvao liniju!");
-                // console.log(success);
                 resolve(success);
               },
               error => {

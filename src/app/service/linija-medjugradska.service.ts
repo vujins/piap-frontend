@@ -9,7 +9,6 @@ import { Pretraga } from '../class/pretraga';
 })
 export class LinijaMedjugradskaService {
 
-  //TODO izbrisi gosta kad uradis login
   base_url = 'http://localhost:8080/medjugradska';
   pretraga_url = this.base_url + '/pretraga';
 
@@ -38,4 +37,5 @@ export class LinijaMedjugradskaService {
   save(medjugradska: LinijaMedjugradska) {
     return this.httpClient.post<LinijaMedjugradska>(this.base_url, medjugradska);
   }
+  
 }

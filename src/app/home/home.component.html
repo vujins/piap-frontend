@@ -1,1 +1,21 @@
-<app-linja-medjugradska-list></app-linja-medjugradska-list>
+<ngb-tabset>
+
+    <ngb-tab title="Medjugradska">
+        <ng-template ngbTabContent>
+            <p>
+                <br>
+                <app-linja-medjugradska-list></app-linja-medjugradska-list>
+            </p>
+        </ng-template>
+    </ngb-tab>
+
+    <ngb-tab title="Gradske" *ngIf="userService.isAdmin || userService.isUser">
+        <ng-template ngbTabContent>
+            <p>
+                <br>
+                <app-linija-gradska-list></app-linija-gradska-list>
+            </p>
+        </ng-template>
+    </ngb-tab>
+
+</ngb-tabset>

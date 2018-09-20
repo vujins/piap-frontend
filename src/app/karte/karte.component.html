@@ -2,18 +2,14 @@
   <caption>Rezervacije</caption>
   <thead>
     <tr>
-      <th scope="col">Korisnik</th>
       <th scope="col">Polazak</th>
       <th scope="col">Prevoznik</th>
       <th scope="col">Medjulinije</th>
-      <th scope="col">Odobren</th>
-      <th scope="col">Odobri</th>
       <th scope="col">Otkazi</th>
     </tr>
   </thead>
   <tbody *ngFor='let rezervacija of rezervacije'>
     <tr *ngIf="rezervacija">
-      <td>{{rezervacija.korisnik.username}}</td>
       <td>{{rezervacija.linija.polazak}}</td>
       <td>{{rezervacija.linija.prevoznik.naziv}}</td>
       <td>
@@ -21,13 +17,7 @@
           {{medjulinija.odrediste.naziv}}</div>
       </td>
       <td>
-        {{rezervacija.odobren}}
-      </td>
-      <td>
-        <button class="btn btn-primary" (click)="odobri(rezervacija)" *ngIf="!rezervacija.odobren">Odobri</button>
-      </td>
-      <td>
-        <button class="btn btn-secondary" (click)="otkazi(rezervacija)">Otkazi</button>
+        <button class="btn btn-primary" (click)="otkazi(rezervacija)">Otkazi</button>
       </td>
     </tr>
   </tbody>

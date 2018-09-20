@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { Pretraga } from '../../class/pretraga';
 import { LinijaMedjugradskaService } from '../../service/linija-medjugradska.service'; import { $ } from 'protractor';
 import { LinijaMedjugradska } from '../../class/linija-medjugradska';
+import { RezervacijaService } from '../../service/rezervacija.service';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-linja-medjugradska-list',
@@ -16,7 +18,14 @@ export class LinjaMedjugradskaListComponent implements OnInit {
   pretraga: Pretraga = new Pretraga();
   ispretraga: boolean = false;
 
-  constructor(private linijaMedjugradskaService: LinijaMedjugradskaService) { }
+  msg: string = "";
+  greska: boolean = false;
+
+  constructor(
+    private linijaMedjugradskaService: LinijaMedjugradskaService,
+    private rezervacijaService: RezervacijaService,
+    private userService: UserService
+    ) { }
 
   ngOnInit() {
     this.get();
@@ -53,6 +62,21 @@ export class LinjaMedjugradskaListComponent implements OnInit {
     this.pretraga.polazak =  this.pretraga.prevoznik =  this.pretraga.polaziste =  this.pretraga.odrediste = "";
     this.ispretraga = false;
     this.get();
+  }
+
+  rezervisi(linija: LinijaMedjugradska) {
+    this.rezervacijaService.save(linija).subscribe(
+      success => {
+        this.msg = "Uspesno ste rezervisali liniju!";
+        this.greska = false;
+      },
+      error => {
+        this.msg = "Greska prilikom rezervisanja karte";
+        this.greska = true;
+
+        console.log(error);
+      }
+    );
   }
 
 }

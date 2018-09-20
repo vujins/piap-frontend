@@ -22,12 +22,13 @@ import { MedjugradskaAdminComponent } from './medjugradska-admin/medjugradska-ad
 import { VozacFormaComponent } from './vozac-forma/vozac-forma.component';
 import { AutobusFormaComponent } from './autobus-forma/autobus-forma.component';
 import { LinijaFormaComponent } from './linija-forma/linija-forma.component';
-import { StepperComponent } from './stepper/stepper.component';
 import { ShareModule } from './share/share.module';
 import { PrevoznikFormaComponent } from './prevoznik-forma/prevoznik-forma.component';
 import { GradskaAdminComponent } from './gradska-admin/gradska-admin.component';
 import { KarteAdminComponent } from './karte-admin/karte-admin.component';
 import { GradskaFormaComponent } from './gradska-admin/gradska-forma/gradska-forma.component';
+import { LinijaGradskaListComponent } from './home/linija-gradska-list/linija-gradska-list.component';
+import { KarteComponent } from './karte/karte.component';
 
 @NgModule({
   declarations: [
@@ -43,11 +44,12 @@ import { GradskaFormaComponent } from './gradska-admin/gradska-forma/gradska-for
     VozacFormaComponent,
     AutobusFormaComponent,
     LinijaFormaComponent,
-    StepperComponent,
     PrevoznikFormaComponent,
     GradskaAdminComponent,
     KarteAdminComponent,
-    GradskaFormaComponent
+    GradskaFormaComponent,
+    LinijaGradskaListComponent,
+    KarteComponent
   ],
   imports: [
     BrowserModule,

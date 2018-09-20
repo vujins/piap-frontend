@@ -27,11 +27,11 @@
         </li>
 
         <li class="nav-item" *ngIf="userService.isAdmin">
-          <a class="nav-link js-scroll-trigger" routerLink="/karte-admin">Karte</a>
+          <a class="nav-link js-scroll-trigger" routerLink="/karte-admin">Odobravanje karata</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" routerLink="/stepper">Stepper</a>
+        <li class="nav-item" *ngIf="userService.isUser">
+          <a class="nav-link js-scroll-trigger" routerLink="/karte">Karte</a>
         </li>
 
         <li class="nav-item" *ngIf="!userService.isLoggedIn">
@@ -39,7 +39,8 @@
         </li>
 
         <li class="nav-item" *ngIf="userService.isLoggedIn">
-          <a class="nav-link js-scroll-trigger" routerLink="/home" (click)="logout()">Logout: {{userService.user.username}}</a>
+          <a class="nav-link js-scroll-trigger" routerLink="/home" (click)="logout()">Logout:
+            {{userService.user.username}}</a>
         </li>
 
       </ul>
