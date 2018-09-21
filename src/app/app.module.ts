@@ -29,6 +29,8 @@ import { KarteAdminComponent } from './karte-admin/karte-admin.component';
 import { GradskaFormaComponent } from './gradska-admin/gradska-forma/gradska-forma.component';
 import { LinijaGradskaListComponent } from './home/linija-gradska-list/linija-gradska-list.component';
 import { KarteComponent } from './karte/karte.component';
+import { MesecnaComponent } from './mesecna/mesecna.component';
+import { MesecnaAdminComponent } from './mesecna-admin/mesecna-admin.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { KarteComponent } from './karte/karte.component';
     KarteAdminComponent,
     GradskaFormaComponent,
     LinijaGradskaListComponent,
-    KarteComponent
+    KarteComponent,
+    MesecnaComponent,
+    MesecnaAdminComponent
   ],
   imports: [
     BrowserModule,

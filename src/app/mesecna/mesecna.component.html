@@ -1,0 +1,50 @@
+<table class="table table-hover" id="tabela_rezervacija">
+  <thead>
+    <tr>
+      <th scope="col">Tip</th>
+      <th scope="col">Cena</th>
+      <th scope="col">Rezervisi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mesecna</td>
+      <td>{{cenaMesecna}}</td>
+      <td>
+        <button class="btn btn-primary" (click)="kupi('mesecna')">Kupi</button>
+      </td>
+    </tr>
+    <tr>
+      <td>Godisnja</td>
+      <td>{{cenaGodisnja}}</td>
+      <td>
+        <button class="btn btn-primary" (click)="kupi('godisnja')">Kupi</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="msg != ''">
+  <div *ngIf="greska" class="alert alert-danger">
+    {{msg}}
+  </div>
+  <div *ngIf="!greska" class="alert alert-success">
+    {{msg}}
+  </div>
+</div>
+
+<table class="table table-hover" id="tabela_rezervacija">
+  <caption>Vase karte</caption>
+  <thead>
+    <tr>
+      <th scope="col">Tip</th>
+      <th scope="col">Vazi od</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let mesecna of mesecne">
+    <tr>
+      <td>{{mesecna.tip}}</td>
+      <td>{{mesecna.pocetak}}</td>
+    </tr>
+  </tbody>
+</table>

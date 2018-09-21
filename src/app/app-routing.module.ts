@@ -8,6 +8,8 @@ import { MedjugradskaAdminComponent } from './medjugradska-admin/medjugradska-ad
 import { GradskaAdminComponent } from './gradska-admin/gradska-admin.component';
 import { KarteAdminComponent } from './karte-admin/karte-admin.component';
 import { KarteComponent } from './karte/karte.component';
+import { MesecnaComponent } from './mesecna/mesecna.component';
+import { MesecnaAdminComponent } from './mesecna-admin/mesecna-admin.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,7 +21,9 @@ const routes: Routes = [
   { path: 'medjugradska-admin', component: MedjugradskaAdminComponent },
   { path: 'gradska-admin', component: GradskaAdminComponent },
   { path: 'karte-admin', component: KarteAdminComponent },
-  { path: 'karte', component: KarteComponent }
+  { path: 'karte', component: KarteComponent },
+  { path: 'mesecna', component: MesecnaComponent },
+  { path: 'mesecna-admin', component: MesecnaAdminComponent }
 ];
 
 @NgModule({
