@@ -31,6 +31,7 @@ import { LinijaGradskaListComponent } from './home/linija-gradska-list/linija-gr
 import { KarteComponent } from './karte/karte.component';
 import { MesecnaComponent } from './mesecna/mesecna.component';
 import { MesecnaAdminComponent } from './mesecna-admin/mesecna-admin.component';
+import { RecaptchaModule } from 'angular-google-recaptcha';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,10 @@ import { MesecnaAdminComponent } from './mesecna-admin/mesecna-admin.component';
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
-    ShareModule
+    ShareModule,
+    RecaptchaModule.forRoot({
+      siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+    }),
   ],
   providers: [
     LinijaMedjugradskaService,

@@ -34,7 +34,6 @@ export class GradskaFormaComponent implements OnInit {
   isSubmitted1: boolean = false;
   isSubmitted2: boolean = false;
 
-  //TODO dodaj gradsku servis
   constructor(
     private linijaService: LinijaService,
     private vozacService: VozacService,

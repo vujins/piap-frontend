@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
 
+  myRecaptcha: boolean;
+
   msg: string = "";
   password_potvrda: string = "";
 
@@ -35,6 +37,12 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit() {
+
+    if (!this.myRecaptcha) {
+      this.uspeh = false;
+      this.msg = "Potvrdite da niste robot!";
+      this.greska = true;
+    }
 
     let response = new Promise((resolve, reject) => {
       this.userService.postoji(this.user.username).subscribe(
@@ -100,5 +108,6 @@ export class RegistrationComponent implements OnInit {
     this.msg = "";
     this.uspeh = false;
   }
+
 
 }

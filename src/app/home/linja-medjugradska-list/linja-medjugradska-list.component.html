@@ -45,10 +45,10 @@
     </tr>
   </thead>
   <tbody *ngFor='let linija of linije'>
-    <tr>
-      <td>{{linija.polazak}}</td>
-      <td>{{linija.prevoznik.naziv}}</td>
-      <td>
+    <tr (click)="prikaziTrenutnu(linija)" >
+      <td data-toggle="modal" data-target="#exampleModal">{{linija.polazak}}</td>
+      <td data-toggle="modal" data-target="#exampleModal">{{linija.prevoznik.naziv}}</td>
+      <td data-toggle="modal" data-target="#exampleModal">
         <div *ngFor='let medjulinija of linija.medjulinije'>{{medjulinija.polaziste.naziv}} -
           {{medjulinija.odrediste.naziv}}</div>
       </td>
@@ -58,3 +58,29 @@
     </tr>
   </tbody>
 </table>
+
+<!-- Modal -->
+<div *ngIf="userService.isUser">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Detaljnije informacije</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" *ngIf="trenutna">
+          <h4>Vozac</h4> {{trenutna.vozac.ime}} {{trenutna.vozac.prezime}}
+          <hr>
+          <h4>Autobus</h4> {{trenutna.autobus.marka}} {{trenutna.autobus.model}}
+          <hr>
+          <h4>Broj sedista</h4> {{trenutna.autobus.broj_sedista}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

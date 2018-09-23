@@ -9,6 +9,8 @@ import { LinijaGradskaService } from '../../service/linija-gradska.service';
 })
 export class LinijaGradskaListComponent implements OnInit {
 
+  private trenutna: LinijaGradska;
+
   private linije: Array<LinijaGradska> = new Array<LinijaGradska>();
   private pages: Array<number> = new Array<number>();
 
@@ -56,5 +58,10 @@ export class LinijaGradskaListComponent implements OnInit {
     this.ispretraga = false;
     this.get();
   }
+
+  prikaziTrenutnu(l: LinijaGradska) {
+    this.trenutna = l;
+  }
+
 
 }

@@ -34,14 +34,12 @@
   <thead>
     <tr>
       <th scope="col">Broj linije</th>
-      <th scope="col">Red voznje</th>
       <th scope="col">Medjulinije</th>
     </tr>
   </thead>
   <tbody *ngFor='let linija of linije'>
-    <tr>
+    <tr (click)="prikaziTrenutnu(linija)" data-toggle="modal" data-target="#exampleModal">
       <td>{{linija.broj_linije}}</td>
-      <td>{{linija.red_voznje}}</td>
       <td>
         <div *ngFor='let medjulinija of linija.medjulinije'>{{medjulinija.polaziste.naziv}} -
           {{medjulinija.odrediste.naziv}}</div>
@@ -49,3 +47,26 @@
     </tr>
   </tbody>
 </table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detaljnije informacije</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" *ngIf="trenutna">
+        <h4>Red Voznje</h4> {{trenutna.red_voznje}}
+        <hr>
+        <h4>Vozac</h4> {{trenutna.vozac.ime}} {{trenutna.vozac.prezime}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

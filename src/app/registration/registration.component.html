@@ -31,16 +31,18 @@
         <div class="form-group">
             <label for="password">Lozinka</label>
             <input type="password" class="form-control" id="password" required [(ngModel)]="user.password" name="password"
-                #password="ngModel">
+                #password="ngModel"
+                pattern="(?=.*\d)(?=.*[a-z]{3})(?=.*[A-Z]).{6,12}">
             <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
-                Lozinka je obavezna
+                Lozinka mora da ima izmedju 6 i 12 karaktera, minimalan broj: velikih slova 1, malih slova 3, numerika i specijalnih karaktera 1
             </div>
         </div>
 
         <div class="form-group">
             <label for="password_potvrda">Potvrda lozinke</label>
             <input type="password" class="form-control" id="password_potvrda" required [(ngModel)]="password_potvrda"
-                name="password_potvrda" #password_potvrda_model="ngModel">
+                name="password_potvrda" #password_potvrda_model="ngModel"
+                pattern="(?=.*\d)(?=.*[a-z]{3})(?=.*[A-Z]).{6,12}">
             <div [hidden]="user.password == password_potvrda">
                 <div [hidden]="password_potvrda_model.pristine" class="alert alert-danger">
                     Lozinke nisu iste
@@ -102,7 +104,6 @@
             </div>
         </div>
 
-        TODO: napravi validaciju za email
         <div class="form-group">
             <label for="email">Elektronska posta</label>
             <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" #email="ngModel">
@@ -110,6 +111,8 @@
                 Elektronska posta nije u dobrom formatu
             </div>
         </div>
+
+        <recaptcha [(ngModel)]="myRecaptcha" name = "recaptcha"></recaptcha>
 
         <button type="submit" class="btn btn-success" [disabled]="!regForm.form.valid">Registruj se</button>
         <button type="button" class="btn btn-default" (click)="reset(); regForm.reset()">Reset</button>

@@ -12,6 +12,9 @@ import { UserService } from '../../service/user.service';
   styleUrls: ['./linja-medjugradska-list.component.css']
 })
 export class LinjaMedjugradskaListComponent implements OnInit {
+
+  private trenutna: LinijaMedjugradska;
+
   private linije: Array<LinijaMedjugradska> = new Array<LinijaMedjugradska>();
   private pages: Array<number> = new Array<number>();
 
@@ -77,6 +80,10 @@ export class LinjaMedjugradskaListComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  prikaziTrenutnu(l: LinijaMedjugradska) {
+    this.trenutna = l;
   }
 
 }
